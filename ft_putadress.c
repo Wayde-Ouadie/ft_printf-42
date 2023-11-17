@@ -6,7 +6,7 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:16:32 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 10:24:02 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:33:45 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ static void	ft_recur(unsigned int nbr, int *size)
 		ft_putchar(hex, size);
 	}
 }
+
 void	ft_putadress(unsigned int nbr, int *size)
 {
-	char *add;
+	char	*add;
 
 	add = "0x";
 	if (nbr == 0)
@@ -39,6 +40,6 @@ void	ft_putadress(unsigned int nbr, int *size)
 	else
 	{
 		ft_putstr(add, size);
-		ft_recur(nbr, size);		
+		ft_recur(nbr, size);
 	}
 }
