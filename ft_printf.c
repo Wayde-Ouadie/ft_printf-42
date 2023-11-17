@@ -6,11 +6,13 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 09:05:34 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:38:04 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
 #include <stdio.h>
 
 int	ft_printf(const char *format, ...)
@@ -40,27 +42,28 @@ int	ft_printf(const char *format, ...)
 				else if (format[i] == 'u')
 					ft_putnbr_unsigned(va_arg(args, unsigned int), &size);
 				else if (format[i] == 'x')
-					ft_putnbr_hexlow(va_arg(args, int), &size);
+					ft_puthexlow(va_arg(args, unsigned int), &size);
 				else if (format[i] == 'X')
-					ft_putnbr_hexup(va_arg(args, int), &size);
-				else
-					return (0);
+					ft_puthexup(va_arg(args, unsigned int), &size);
+				else if (format[i] == 'p')
+				{
+					ft_putstr("0x", &size);
+					ft_putadress(va_arg(args, unsigned int), &size);
+				}
+				else if (format[i] == '%')
+					ft_putchar('%', &size);
 			}
 		}
 		else
 			ft_putchar(format[i], &size);
 		i++;
 	}
-	printf("[%d]", size);
-	return (0);
+	return (size);
 }
-
-#include <limits.h>
-#include <stdio.h>
 
 int	main(void)
 {
-	ft_printf("-[%x]--[%X]-", 42, 42);
-	printf("-[%x]--[%X]-", 42, 42);
-	printf("[%d]", printf("-[%x]--[%X]-", 42, 42));
+	ft_printf("[%d]", ft_printf("mine-[%p]--[%p]--[%p]-", -42, 0, 42));
+	printf("\n");
+	printf("[%d]", printf("macs-[%p]--[%p]--[%p]-", -42, 0, 42));
 }

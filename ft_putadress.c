@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hexlow.c                                 :+:      :+:    :+:   */
+/*   ft_putadress.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 08:42:49 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 08:55:52 by oel-feng         ###   ########.fr       */
+/*   Created: 2023/11/17 09:16:32 by oel-feng          #+#    #+#             */
+/*   Updated: 2023/11/17 09:34:55 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_hexlow(int nbr, int *size)
+void	ft_putadress(unsigned int nbr, int *size)
 {
 	char	hex;
-	int		i;
 
-	i = 0;
+	hex = '0';
 	if (nbr)
 	{
-		ft_putnbr_hexlow(nbr / 16, size);
+		ft_putadress(nbr / 16, size);
 		if (nbr % 16 < 10)
 			hex = nbr % 16 + 48;
 		else
