@@ -1,0 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
+/*   Updated: 2023/11/17 05:32:38 by oel-feng         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+#include <stdarg.h>
+
+int	ft_printf(const char *format, ...)
+{
+	int		size;
+	int		i;
+	va_list	args;
+
+	if (write(1, "", 0) == -1)
+		return (-1);
+	size = 0;
+	i = 0;
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			size++;
+			if (format[i])
+			{
+				if (format[i] == 'c')
+					ft_putchar(va_arg(args, int), &size);
+				else if (format[i] == 's')
+					ft_putstr(va_arg(args, char *), &size);
+				else if (format[i] == 'd' || format[i] == 'i')
+					ft_putnbr(va_arg(args, int), &size);
+				else if (format[i] == 'u')
+					ft_putnbr_unsigned(va_arg(args, unsigned int), &size);
+				else
+					return (0);
+			}
+		}
+		else
+			ft_putchar(format[i], &size);
+		i++;
+	}
+	return (0);
+}
+#include <limits.h>
+int main(void)
+{
+	char c = 'a';
+	int i = 100;
+	long j = -2147483648;
+	char *s = "hello";
+	ft_printf("[%i][%c][%s][%u]", j, c, s, i);
+}
