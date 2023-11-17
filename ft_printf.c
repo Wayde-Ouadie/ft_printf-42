@@ -6,7 +6,7 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 11:54:11 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:21:16 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	ft_recognition(va_list args, const char format, int *size)
 		ft_puthexup(va_arg(args, unsigned int), size);
 	else if (format == 'p')
 		ft_putadress(va_arg(args, unsigned int), size);
-	else if (format == '%')
-		ft_putchar('%', size);
+	else
+		ft_putchar(format, size);
 }
 
 int	ft_printf(const char *format, ...)
