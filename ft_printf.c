@@ -6,14 +6,11 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 09:38:04 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:14:41 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
-#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -46,10 +43,7 @@ int	ft_printf(const char *format, ...)
 				else if (format[i] == 'X')
 					ft_puthexup(va_arg(args, unsigned int), &size);
 				else if (format[i] == 'p')
-				{
-					ft_putstr("0x", &size);
 					ft_putadress(va_arg(args, unsigned int), &size);
-				}
 				else if (format[i] == '%')
 					ft_putchar('%', &size);
 			}
@@ -60,6 +54,8 @@ int	ft_printf(const char *format, ...)
 	}
 	return (size);
 }
+
+#include <stdio.h>
 
 int	main(void)
 {
