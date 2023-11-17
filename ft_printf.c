@@ -6,12 +6,11 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 09:03:19 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:05:34 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 #include <stdio.h>
 
 int	ft_printf(const char *format, ...)
@@ -56,12 +55,12 @@ int	ft_printf(const char *format, ...)
 	return (0);
 }
 
-// #include <limits.h>
-// #include <stdio.h>
+#include <limits.h>
+#include <stdio.h>
 
-// int	main(void)
-// {
-// 	ft_printf("-[%x]--[%X]-", 42, 42);
-// 	printf("-[%x]--[%X]-", 42, 42);
-// 	printf("[%d]", printf("-[%x]--[%X]-", 42, 42));
-// }
+int	main(void)
+{
+	ft_printf("-[%x]--[%X]-", 42, 42);
+	printf("-[%x]--[%X]-", 42, 42);
+	printf("[%d]", printf("-[%x]--[%X]-", 42, 42));
+}
