@@ -21,7 +21,7 @@ clean:
 	@${RM} ${OBJ}
 
 fclean: clean
-	@echo "Removing libft.a."
+	@echo "Removing libftprintf.a."
 	@${RM} ${NAME}
 
 re: fclean all
