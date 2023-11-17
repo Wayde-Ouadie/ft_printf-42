@@ -6,7 +6,7 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 10:14:41 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:24:38 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,4 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	return (size);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	ft_printf("[%d]", ft_printf("mine-[%p]--[%p]--[%p]-", -42, 0, 42));
-	printf("\n");
-	printf("[%d]", printf("macs-[%p]--[%p]--[%p]-", -42, 0, 42));
 }
