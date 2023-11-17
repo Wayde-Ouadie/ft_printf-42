@@ -6,7 +6,7 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:33:50 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 08:54:41 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 08:59:55 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_putstr(char *str, int *size);
 void	ft_putnbr(int nbr, int *size);
 void	ft_putnbr_unsigned(unsigned int nbr, int *size);
 void	ft_putnbr_hexlow(int nbr, int *size);
+void	ft_putnbr_hexup(int nbr, int *size);
 
 #endif
