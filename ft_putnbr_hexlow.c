@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_hexlow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 22:33:50 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 08:54:41 by oel-feng         ###   ########.fr       */
+/*   Created: 2023/11/17 08:42:49 by oel-feng          #+#    #+#             */
+/*   Updated: 2023/11/17 08:55:52 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+void	ft_putnbr_hexlow(int nbr, int *size)
+{
+	char	hex;
+	int		i;
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar(char c, int *size);
-void	ft_putstr(char *str, int *size);
-void	ft_putnbr(int nbr, int *size);
-void	ft_putnbr_unsigned(unsigned int nbr, int *size);
-void	ft_putnbr_hexlow(int nbr, int *size);
-
-#endif
+	i = 0;
+	if (nbr)
+	{
+		ft_putnbr_hexlow(nbr / 16, size);
+		if (nbr % 16 < 10)
+			hex = nbr % 16 + 48;
+		else
+			hex = (nbr % 16) - 10 + 'a';
+		ft_putchar(hex, size);
+	}
+}
