@@ -13,7 +13,7 @@ ${NAME}: ${OBJ}
 	@echo "Compiling mandatory part."
 	@${LIB} ${NAME} ${OBJ}
 
-.c.o: ft_printf.h
+%.o:%.c ft_printf.h
 	@${CC} ${FLAG} -c $<
 
 clean:
