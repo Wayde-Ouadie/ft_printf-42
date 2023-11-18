@@ -6,13 +6,13 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:16:32 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 10:33:45 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:20:14 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_recur(unsigned int nbr, int *size)
+static void	ft_recur(unsigned long nbr, int *size)
 {
 	char	hex;
 
@@ -27,7 +27,7 @@ static void	ft_recur(unsigned int nbr, int *size)
 	}
 }
 
-void	ft_putadress(unsigned int nbr, int *size)
+void	ft_putadress(unsigned long nbr, int *size)
 {
 	char	*add;
 

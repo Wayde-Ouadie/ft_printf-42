@@ -1,5 +1,5 @@
 SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_putnbr_unsigned.c \
-	ft_puthexlow.c ft_puthexup.c ft_putadress.c
+	ft_puthexlow.c ft_puthexup.c ft_putadress.c ft_printf.c
 OBJ = ${SRC:.c=.o}
 NAME = libftprintf.a
 LIB = ar rc
