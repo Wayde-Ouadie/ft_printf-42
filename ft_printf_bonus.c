@@ -6,11 +6,20 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/21 13:54:36 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:58:45 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+static void	ft_flags_check(va_list args, const char format, int *size)
+{
+	if (format == '#')
+		return ;
+	else if (format == '+')
+		return ;
+	else if (format == ' ')
+		return ;
+}
 
 static void	ft_recognition(va_list args, const char format, int *size)
 {
@@ -47,9 +56,9 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (format[i] == '\0')
+			if (format[++i] == '\0')
 				break ;
+			ft_flags_check(args, format[i++], &size);
 			ft_recognition(args, format[i], &size);
 		}
 		else
