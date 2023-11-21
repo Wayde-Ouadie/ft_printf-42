@@ -6,12 +6,12 @@
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/21 13:58:45 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:17:25 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static void	ft_flags_check(va_list args, const char format, int *size)
+static void	ft_flags_check(va_list args, const char format, const char next, int *size)
 {
 	if (format == '#')
 		return ;
@@ -58,8 +58,8 @@ int	ft_printf(const char *format, ...)
 		{
 			if (format[++i] == '\0')
 				break ;
-			ft_flags_check(args, format[i++], &size);
-			ft_recognition(args, format[i], &size);
+			ft_flags_check(args, format[i], format[i+1], &size);
+			ft_recognition(args, format[++i], &size);
 		}
 		else
 			ft_putchar(format[i], &size);
