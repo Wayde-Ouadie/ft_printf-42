@@ -1,5 +1,5 @@
-SRC = ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c \
-	ft_putnbr_unsigned.c ft_puthexlow.c ft_puthexup.c ft_putadress.c
+SRC = ft_putchar.c ft_putstr.c ft_putnbr.c ft_putnbr_unsigned.c \
+	ft_puthexlow.c ft_puthexup.c ft_putadress.c ft_printf.c
 OBJ = ${SRC:.c=.o}
 NAME = libftprintf.a
 LIB = ar rc
@@ -13,7 +13,7 @@ ${NAME}: ${OBJ}
 	@echo "Compiling mandatory part."
 	@${LIB} ${NAME} ${OBJ}
 
-.c.o: ft_printf.h
+%.o:%.c ft_printf.h
 	@${CC} ${FLAG} -c $<
 
 clean:
