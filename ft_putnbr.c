@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putadress.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 09:16:32 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/17 18:20:14 by oel-feng         ###   ########.fr       */
+/*   Created: 2023/11/17 05:16:04 by oel-feng          #+#    #+#             */
+/*   Updated: 2023/11/17 09:03:02 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_recur(unsigned long nbr, int *size)
+void	ft_putnbr(int nbr, int *size)
 {
-	char	hex;
+	long	n;
 
-	if (nbr)
+	n = nbr;
+	if (n < 0)
 	{
-		ft_recur(nbr / 16, size);
-		if (nbr % 16 < 10)
-			hex = nbr % 16 + 48;
-		else
-			hex = (nbr % 16) - 10 + 'a';
-		ft_putchar(hex, size);
+		ft_putchar('-', size);
+		n *= -1;
 	}
-}
-
-void	ft_putadress(unsigned long nbr, int *size)
-{
-	char	*add;
-
-	add = "0x";
-	if (nbr == 0)
+	if (n > 9)
 	{
-		ft_putstr(add, size);
-		ft_putchar('0', size);
+		ft_putnbr(n / 10, size);
+		ft_putchar((n % 10) + 48, size);
 	}
 	else
-	{
-		ft_putstr(add, size);
-		ft_recur(nbr, size);
-	}
+		ft_putchar(n + 48, size);
 }

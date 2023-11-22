@@ -1,43 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:35:47 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/21 19:24:28 by oel-feng         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:00:52 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	ft_flags_check(int args, const char format, const char next, int *size)
-{
-	if (format == '#')
-	{
-		if (next == 'x')
-			ft_putstr("0x", size);
-		else if (next == 'X')
-			ft_putstr("0X", size);
-	}
-	else if (format == '+')
-	{
-		if (next == 'i' || next == 'd')
-		{
-			if (args >= 0)
-				ft_putchar(43, size);
-		}
-	}
-	else if (format == ' ')
-	{
-		if (next == 'i' || next == 'd')
-		{
-			if (args >= 0)
-				ft_putchar(32, size);
-		}
-	}
-}
 
 static void	ft_recognition(va_list args, const char format, int *size)
 {
@@ -46,10 +19,7 @@ static void	ft_recognition(va_list args, const char format, int *size)
 	else if (format == 's')
 		ft_putstr(va_arg(args, char *), size);
 	else if (format == 'd' || format == 'i')
-	{
-		printf("helloo %c && %d\n", format,va_arg(args, int));
 		ft_putnbr(va_arg(args, int), size);
-	}
 	else if (format == 'u')
 		ft_putnbr_unsigned(va_arg(args, unsigned int), size);
 	else if (format == 'x')
@@ -57,7 +27,7 @@ static void	ft_recognition(va_list args, const char format, int *size)
 	else if (format == 'X')
 		ft_puthexup(va_arg(args, unsigned int), size);
 	else if (format == 'p')
-		ft_putadress(va_arg(args, unsigned long), size);
+		ft_putadress(va_arg(args, unsigned int), size);
 	else
 		ft_putchar(format, size);
 }
@@ -77,11 +47,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[++i] == '\0')
+			i++;
+			if (format[i] == '\0')
 				break ;
-			printf("%d\n",va_arg(args, int));
-			ft_flags_check(va_arg(args, int), format[i], format[i+1], &size);
-			ft_recognition(args, format[++i], &size);
+			ft_recognition(args, format[i], &size);
 		}
 		else
 			ft_putchar(format[i], &size);

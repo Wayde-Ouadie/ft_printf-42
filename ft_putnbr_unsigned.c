@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-feng <oel-feng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 05:05:52 by oel-feng          #+#    #+#             */
-/*   Updated: 2023/11/21 19:24:44 by oel-feng         ###   ########.fr       */
+/*   Created: 2023/11/17 05:22:17 by oel-feng          #+#    #+#             */
+/*   Updated: 2023/11/17 13:18:25 by oel-feng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *str, int *size)
+void	ft_putnbr_unsigned(unsigned int nbr, int *size)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
+	if (nbr > 9)
 	{
-		ft_putstr("(null)", size);
-		return ;
+		ft_putnbr_unsigned(nbr / 10, size);
+		ft_putchar((nbr % 10) + 48, size);
 	}
-	while (str[i])
-		ft_putchar(str[i++], size);
+	else
+		ft_putchar(nbr + 48, size);
 }
