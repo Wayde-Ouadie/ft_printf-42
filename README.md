@@ -11,8 +11,6 @@ This repository contains all files for the __printf__ project from School 1337 C
 	<a href="#requirements">Requirements</a>
 	<span> · </span>
 	<a href="#instructions">Instructions</a>
-	<span> · </span>
-	<a href="#testing">Testing</a>
 </h2>
 
 ## About
@@ -58,6 +56,3 @@ To use this project in your code, simply include this header:
 ```
 #include "ft_printf.h"
 ```
-
-## Testing
-This function have been tested with [Francinette](https://github.com/xicodomingues/francinette).
