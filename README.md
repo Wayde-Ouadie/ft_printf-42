@@ -43,7 +43,7 @@ For __mandatory__ functions:
 ```
 $ make
 ```
-### 2. Cleaning all binary (.o) and executable files
+### 2. Cleaning all binary and executable files
 
 To delete all files generated with make, go to the path and run:
 ```
